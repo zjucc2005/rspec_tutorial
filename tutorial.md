@@ -1,4 +1,4 @@
-### RSpec Tutorial
+# RSpec Tutorial
 
 ## Get Started
 1. 安装RSpec
