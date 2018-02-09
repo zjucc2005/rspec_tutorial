@@ -77,8 +77,7 @@ expect(message).to eq("Hello World!")
 # :not_to 的用法和 :to 相反
 expect(message).not_to eq("Goodbye!")
 ```
-上面的 eq 是RSpec的匹配方法, 用来表示 message 与预期结果 "Hello World!" 相等
-除了 eq 之外, eql, be, equal 都是表示相等, 用法没有什么不同
+上面的 eq 是RSpec的匹配方法, 用来表示 message 与预期结果 "Hello World!" 相等. 除了 eq 之外, eql, be, equal 都是表示相等, 用法没有什么不同
 
 ```
 describe "匹配方法测试" do
@@ -96,9 +95,9 @@ describe "匹配方法测试" do
 
 end
 ```
-eq,eql,be,equal匹配的严格程度有略微区别: eq < eql < be = equal
-eq/:==, eql/:eql?, equal/:equal?, eq/:== 意思是 eq 就是按照ruby的 :== 方法进行相等的判断,以此类推
-关于 :==, :eql?, :equal? 三者的区别:
+* eq,eql,be,equal匹配的严格程度有略微区别: eq < eql < be = equal
+* eq/:==, eql/:eql?, equal/:equal?, eq/:== 意思是 eq 就是按照ruby的 :== 方法进行相等的判断,以此类推
+* 关于 :==, :eql?, :equal? 三者的区别:
 1. :equal? 是同一个对象时(:__id__返回结果一致),返回true
 2. :==, :eql? 是比较对象完全一致时(:__id__返回结果可以不同),返回true
 3. 比较数值时 :eql? 区分 Float 和 Integer, :== 不区分
