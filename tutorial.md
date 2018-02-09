@@ -96,16 +96,6 @@ describe "匹配方法测试" do
 
 end
 ```
-|匹配方法|描述|例子|
-|eq| 当 :== 比较返回true时通过 |expect(obj).to eq expectation|
-|eql| 当 :eql? 比较返回true时通过 |expect(obj).to eql expectation|
-|be| 当 :equal? 比较返回true时通过 |expect(obj).to be expectation|
-|equal| 当 :equal? 比较返回true时通过 |expect(obj).to equal expectation|
-|>| 当 :> 比较返回true时通过 |expect(obj).to be > expectation|
-|be_between(min, max).inclusive| 当 >= min 且 <= max 时通过 |expect(obj).to be_between(min, max).inclusive|
-|be_between(min, max).exclusive| 当 < min 且 > max 时通过 |expect(obj).to be_between(min, max).exclusive|
-|match| 当匹配正则表达式时通过 |expect(obj).to match(/regex/)|
-
 eq,eql,be,equal匹配的严格程度有略微区别: eq < eql < be = equal
 eq/:==, eql/:eql?, equal/:equal?, eq/:== 意思是 eq 就是按照ruby的 :== 方法进行相等的判断,以此类推
 关于 :==, :eql?, :equal? 三者的区别:
@@ -127,6 +117,16 @@ a == b     # true
 a.eql? b   # true
 a.equal? b # true
 ```
+|匹配方法|描述|例子|
+| :- | :- | :- |
+|eq| 当 :== 比较返回true时通过 |expect(obj).to eq expectation|
+|eql| 当 :eql? 比较返回true时通过 |expect(obj).to eql expectation|
+|be| 当 :equal? 比较返回true时通过 |expect(obj).to be expectation|
+|equal| 当 :equal? 比较返回true时通过 |expect(obj).to equal expectation|
+|>| 当 :> 比较返回true时通过 |expect(obj).to be > expectation|
+|be_between(min, max).inclusive| 当 >= min 且 <= max 时通过 |expect(obj).to be_between(min, max).inclusive|
+|be_between(min, max).exclusive| 当 < min 且 > max 时通过 |expect(obj).to be_between(min, max).exclusive|
+|match| 当匹配正则表达式时通过 |expect(obj).to match(/regex/)|
 
 
 
