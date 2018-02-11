@@ -37,7 +37,7 @@ Finished in 0.00231 seconds (files took 0.18998 seconds to load)
 ```
 
 ## 语法
-1. 关键词 - 以上面的hello_world_spec.rb为例
+### 1. 关键词 - 以上面的hello_world_spec.rb为例
 ```
 # describe - 通常用来定义一组测试用例, describe的参数可以是类/字符串.
 # 也可以写成 RSpec.describe HelloWorld{...}
@@ -68,7 +68,7 @@ describe HelloWorld do
    end
 end
 ```
-2. 匹配方法
+### 2. 匹配方法
 hello_world_spec.rb 中用来描述预期结果的语句
 ```
 expect(message).to eq "Hello World!"
@@ -136,7 +136,7 @@ a.equal? b # true
 |raise_error('error message')| 当block抛出异常消息'error message'时通过 |expect{block}.to raise_error('error message')|
 |raise_error(ErrorClass,'error message')| 当block抛出ErrorClass异常且异常消息'error message'时通过 |expect{block}.to (ErrorClass,'error message')|
 
-3. 模拟对象 - Test Doubles(RSpec Mocks)
+### 3. 模拟对象 - Test Doubles(RSpec Mocks)
 * Test Double是一个模拟对象,在代码中模拟系统的另一个对象,方便测试.
 * 例如,测试时需要一个书架的类(Bookshelf),可以自动列出所有书名的方法(:list_book_titles),如下:
 ```
@@ -171,7 +171,7 @@ describe Bookshelf do
    end
 end
 ```
-4. 模拟方法 - Method Stubs
+### 4. 模拟方法 - Method Stubs
 * Test Double是直接模拟一个不存在的类及其方法,但如果类已经存在,我们只需要模拟这个类的方法的话,该怎么做呢?
 * RSpec也可以直接模拟真实对象的方法
 ```
@@ -203,7 +203,7 @@ allow(:book).to receive(:title) do |format|
    end
 end
 ```
-5. 钩子 - Hooks
+### 5. 钩子 - Hooks
 * 当我们在写测试用例时,很多测试用例在开始前都要做一些准备工作,或者在结束后做一些数据的清理.
 * 显然我们不想这些准备代码和清理代码在每一个测试用例里都写一遍,为了便于维护修改,
 * 这些代码需要在每个测试用例的开始结束时自动加载,减少代码的重复.
@@ -254,7 +254,7 @@ describe MyClass do
    end
 end
 ```
-6. 标签 - Tags
+### 6. 标签 - Tags
 RSpec可以给测试用例加上标签,默认情况下,RSpec会运行所有测试用例,但加上标签后,运行时就可以通过标签只运行某一组测试
 ```
 # tags_test.rb
