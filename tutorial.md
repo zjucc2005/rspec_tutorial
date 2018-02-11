@@ -132,6 +132,8 @@ a.equal? b # true
 |be_truthy| 当不是false和nil时通过 |expect(actual).to be_truthy|
 |be_falsey| 当是false或nil时通过 |expect(actual).to be_falsey|
 |be_nil| 同 be nil |expect(actual).to be_nil|
+|change{ object }.from(old).to(new)| 执行block前检查object是否是old,执行后检查是否new |expect{ block }.to change{ object }.from(old).to(new) |
+|change{ object }.by(1)| 执行block前后检查object的值是否增加1 |expect{ block }.to change{ object }.by(1) |
 |raise_error(ErrorClass)| 当block抛出ErrorClass异常时通过 |expect{block}.to raise_error(ErrorClass)|
 |raise_error('error message')| 当block抛出异常消息'error message'时通过 |expect{block}.to raise_error('error message')|
 |raise_error(ErrorClass,'error message')| 当block抛出ErrorClass异常且异常消息'error message'时通过 |expect{block}.to (ErrorClass,'error message')|
