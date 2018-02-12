@@ -102,9 +102,16 @@ end
 2. :==, :eql? 是比较对象完全一致时(:__id__返回结果可以不同),返回true
 3. 比较数值时 :eql? 区分 Float 和 Integer, :== 不区分
 ```
-1 == 1.0     # true
-1.eql? 1.0   # false
-1.equal? 1.0 # false
+class Book; end
+book1 = Book.new
+book2 = Book.new
+book1 == book2           # false
+book1.eql? book2         # false
+book1.equal? book2       # false
+
+1 == 1.0                 # true
+1.eql? 1.0               # false
+1.equal? 1.0             # false
 
 'string' == 'string'     # true
 'string'.eql? 'string'   # true
@@ -112,9 +119,9 @@ end
 
 a = 'test'
 b = a
-a == b     # true
-a.eql? b   # true
-a.equal? b # true
+a == b                   # true
+a.eql? b                 # true
+a.equal? b               # true
 ```
 |匹配方法|描述|例子|
 | :- | :- | :- |
