@@ -295,11 +295,11 @@ Finished in 3 seconds (files took 0.08743 seconds to load)
 ```
 shared_examples_for "any pizza" do
    it "tastes really good" do
-      @pizza.should taste_really_good
+      expect(@pizza.taste_really_good).to be true
    end
 
    it "is available by the slice" do
-      @pizza.should be_available_by_the_slice
+      expect(@pizza.be_available_by_the_slice).to be true
    end
 end
 ```
@@ -314,7 +314,7 @@ describe "New York style thin crust pizza" do
    it_behaves_like "any pizza"
 
    it "has a really great sauce" do
-      @pizza.should have_a_really_great_sauce
+      expect(@pizza.have_a_really_great_sauce).to be true
    end
 end
 
@@ -326,7 +326,7 @@ describe "Chicago style stuffed pizza" do
    it_behaves_like "any pizza"
 
    it "has a ton of cheese" do
-      @pizza.should have_a_ton_of_cheese
+      expect(@pizza.have_a_ton_of_cheese).to be true
    end
 end
 ```
