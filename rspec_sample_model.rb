@@ -91,14 +91,13 @@ describe User do
         expect(User.first).not_to be_nil
     end
 
-    it 'should be able to delete an user' do
-        expect{ User.first.destroy }.to change{ User.count }.by(-1)
+    it 'should be able to update an user' do
+        user.update(name: 'update_test')
+        expect(user.name).to eq('update_test')
     end
 
-    it 'should be able to update an user' do
-        user.save!
-        user.update(name: 'update_test')
-        expect(user.name).not_to eq('rspec')
+    it 'should be able to delete an user' do
+        expect{ User.first.destroy }.to change{ User.count }.by(-1)
     end
 
     # 实例方法测试
