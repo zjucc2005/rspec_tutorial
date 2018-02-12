@@ -1,5 +1,5 @@
-# ![](http://rspec.info/images/logo.png) RSpec Tutorial
-
+# RSpec Tutorial
+![](http://rspec.info/images/logo.png)
 ## 开始吧, 先来Hello World!
 1. 安装RSpec
 ```

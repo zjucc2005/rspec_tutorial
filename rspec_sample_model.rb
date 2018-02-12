@@ -11,7 +11,7 @@ class User < ActiveRecord::Base
         "Hi, I am #{name}."
     end
 
-    def raise_an_error
+    def self.raise_an_error
         raise NameError, 'name error'
     end
 end
@@ -101,11 +101,12 @@ describe User do
     end
 
     # 实例方法测试
-    it "should return 'Hi, I am xxx' when user.say_hi" do
+    it '.say_hi' do
         expect(user.say_hi).to eq('Hi, I am rspec.')
     end
 
-    it 'should raise an error when user.raise_an_error' do
-        expect{ user.raise_an_error }.to raise_error(NameError, 'name error')
+    # 类方法测试
+    it '#raise_an_error' do
+        expect{ User.raise_an_error }.to raise_error(NameError, 'name error')
     end
 end
