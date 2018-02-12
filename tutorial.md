@@ -134,9 +134,10 @@ a.equal? b # true
 |be_nil| 同 be nil |expect(actual).to be_nil|
 |change{ object }.from(old).to(new)| 执行block前检查object是否是old,执行后检查是否new |expect{ block }.to change{ object }.from(old).to(new) |
 |change{ object }.by(1)| 执行block前后检查object的值是否增加1 |expect{ block }.to change{ object }.by(1) |
-|raise_error(ErrorClass)| 当block抛出ErrorClass异常时通过 |expect{block}.to raise_error(ErrorClass)|
-|raise_error('error message')| 当block抛出异常消息'error message'时通过 |expect{block}.to raise_error('error message')|
-|raise_error(ErrorClass,'error message')| 当block抛出ErrorClass异常且异常消息'error message'时通过 |expect{block}.to (ErrorClass,'error message')|
+|raise_error(ErrorClass)| 当block抛出ErrorClass异常时通过 |expect{ block }.to raise_error(ErrorClass)|
+|raise_error('error message')| 当block抛出异常消息'error message'时通过 |expect{ block }.to raise_error('error message')|
+|raise_error(ErrorClass,'error message')| 当block抛出ErrorClass异常且异常消息'error message'时通过 |expect{ block }.to (ErrorClass,'error message')|
+* 注意! expect后面有传普通参数,也有传block的,注意区分!
 
 ### 3. 模拟对象 - Test Doubles(RSpec Mocks)
 * Test Double是一个模拟对象,在代码中模拟系统的另一个对象,方便测试.
@@ -239,12 +240,12 @@ end
 * 还有 before(:all), after(:all) 表示在所有测试用例运行之前/后运行, 仅一次
 * 此外, 还有一种形式 let(:name){ block }
 * let使用后面的block来创建一个对象,和before(:each)类似,区别是:
-* 1. let只能创建一个对象,以便后面测试代码直接调用,而before(:each)中可以做更多的操作;
+* 1. 一个let只能创建一个对象,以便后面测试代码直接调用,而before(:each)中可以做更多的操作;
 * 2. let只会执行一遍,执行后会缓存创建后的对象,后续执行调用速度快;
 * 所以上面的测试用例也可以写成:
 ```
 describe MyClass do
-   let(my_class){ MyClass.new }
+   let(:my_class){ MyClass.new }
 
    it 'should have default message' do
       expect(my_class.message).not_to be nil
