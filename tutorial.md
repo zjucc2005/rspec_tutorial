@@ -36,7 +36,7 @@ Finished in 0.00231 seconds (files took 0.18998 seconds to load)
 1 example, 0 failures
 ```
 
-## 语法
+## 基本语法
 ### 1. 关键词 - 以上面的hello_world_spec.rb为例
 ```
 # describe - 通常用来定义一组测试用例, describe的参数可以是类/字符串.
@@ -207,8 +207,8 @@ allow(:book).to receive(:title) do |format|
 end
 ```
 ### 5. 钩子 - Hooks
-* 当我们在写测试用例时,很多测试用例在开始前都要做一些准备工作,或者在结束后做一些数据的清理.
-* 显然我们不想这些准备代码和清理代码在每一个测试用例里都写一遍,为了便于维护修改,
+* 当编写测试用例时,很多测试用例在开始前都要做一些准备工作,或者在结束后做一些数据的清理.
+* 这些准备代码和清理代码在每一个测试用例里都写一遍一点显得都不优雅,为了便于维护修改,
 * 这些代码需要在每个测试用例的开始结束时自动加载,减少代码的重复.
 * 原则上,每个测试用例之间需要相互独立,通过钩子加载的代码不能对其他测试用例造成干扰.
 * unit test 里通过 setup 和 teardown 来实现, RSpec也提供了一系列钩子来实现, 比如 before 和 after
@@ -282,12 +282,90 @@ Finished in 3 seconds (files took 0.08743 seconds to load)
 1 example, 0 failures
 
 ```
+## 共享测试用例
+* 当写的测试代码越来越多时,我们会发现有很多类之间会有着类似的行为
+* 这时可以用共享测试用例包装这一组行为,然后再其他的类测试里直接引用,减少重复
+```
+shared_examples_for "any pizza" do
+   it "tastes really good" do
+      @pizza.should taste_really_good
+   end
 
+   it "is available by the slice" do
+      @pizza.should be_available_by_the_slice
+   end
+end
+```
+* 上述代码用shared_examples_for申明了一组共享测试用例'any pizza',
+* 然后我们在其他测试用例组里通过 it_behaves_like 来引用它
+```
+describe "New York style thin crust pizza" do
+   before(:each) do
+      @pizza = Pizza.new(:region => 'New York', :style => 'thin crust')
+   end
 
+   it_behaves_like "any pizza"
 
+   it "has a really great sauce" do
+      @pizza.should have_a_really_great_sauce
+   end
+end
 
+describe "Chicago style stuffed pizza" do
+   before(:each) do
+      @pizza = Pizza.new(:region => 'Chicago', :style => 'stuffed')
+   end
 
+   it_behaves_like "any pizza"
 
+   it "has a ton of cheese" do
+      @pizza.should have_a_ton_of_cheese
+   end
+end
+```
+## 测试用例组的嵌套
+* 前面提到 describe 可以实现测试用例组嵌套,当测试用例越來越多时,将测试进行分组会更方便管理
+* 下面是一个简单例子
+```
+describe 'outer' do
+   describe 'inner' do
+   end
+end
+```
+* 定义在内层的'inner'可以看作是'outer'的子类,这意味着在'outer'中加载的模块, 申明的变量, 定义的方法, 以及before, after钩子方法都可以在inner中使用
+* 如果 'outer', 'inner' 都有申明before, after, 执行顺序如下:
+1.Outer before
+2.Inner before
+3.Test example
+4.Inner after
+5.Outer after
+* 简单的验证一下,代码如下:
+```
+describe "outer" do
+   before(:each) { puts "1 - outer before" }
+   describe "inner" do
+      before(:each) { puts "2 - inner before" }
+      it { puts "3 - test example"}
+      after(:each) { puts "4 - inner after" }
+   end
+   after(:each) { puts "5 - outer after" }
+end
+```
+* 执行上述代码,得到如下结果,验证通过
+```
+1 - outer before
+2 - inner before
+3 - test example
+4 - inner after
+5 - outer after
+.
 
-
+Finished in 0.00175 seconds (files took 0.082 seconds to load)
+1 example, 0 failures
+```
+## Advanced
+* RSpec是一个非常棒的工具,通过上面介绍的基本语法,已经可以在工作中写出具有良好可读性的测试代码了.
+但是RSpec其实的功能其实不止如此,它强大DSL可以编写出质量更高,可读性更强,更优雅的测试代码.
+* 下面的网址是探讨使用RSpec的最佳实践,供参考:
+[Better Specs](http://www.betterspecs.org/)
 

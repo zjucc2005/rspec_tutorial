@@ -87,16 +87,16 @@ describe User do
         # 也可以写成 expect{ user.save! }.to change(User, :count).by(1)
     end
 
-    it 'should be able to find an user' do
+    it 'should be able to find a user' do
         expect(User.first).not_to be_nil
     end
 
-    it 'should be able to update an user' do
+    it 'should be able to update a user' do
         user.update(name: 'update_test')
         expect(user.name).to eq('update_test')
     end
 
-    it 'should be able to delete an user' do
+    it 'should be able to delete a user' do
         expect{ User.first.destroy }.to change{ User.count }.by(-1)
     end
 
