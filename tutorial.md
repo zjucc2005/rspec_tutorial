@@ -1,3 +1,4 @@
+![](http://rspec.info/images/logo.png)
 # RSpec Tutorial
 
 ## 开始吧, 先来Hello World!
@@ -367,5 +368,5 @@ Finished in 0.00175 seconds (files took 0.082 seconds to load)
 * RSpec是一个非常棒的工具,通过上面介绍的基本语法,已经可以在工作中写出具有良好可读性的测试代码了.
 但是RSpec其实的功能其实不止如此,它强大DSL可以编写出质量更高,可读性更强,更优雅的测试代码.
 * 下面的网址是探讨使用RSpec的最佳实践,供参考:
-[Better Specs](http://www.betterspecs.org/)
+[http://www.betterspecs.org/](http://www.betterspecs.org/)
 
