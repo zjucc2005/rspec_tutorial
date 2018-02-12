@@ -145,6 +145,31 @@ a.equal? b               # true
 |raise_error('error message')| 当block抛出异常消息'error message'时通过 |expect{ block }.to raise_error('error message')|
 |raise_error(ErrorClass,'error message')| 当block抛出ErrorClass异常且异常消息'error message'时通过 |expect{ block }.to (ErrorClass,'error message')|
 * 注意! expect后面有传普通参数,也有传block的,注意区分!
+* 除了上述匹配方法之外,还有一类匹配方法,原先并不存在,RSpec通过元编程的能力实现这类'幽灵方法',优化了代码的可读性,如下:
+```
+describe Book do
+   let(:book) { Book.new }
+
+   it 'should be valid' do
+      # 按照上述匹配方法是这么写的
+      expect(book.valid?).to be true
+      # 但是RSpec允许你写成下面这样的形式,读起来更自然通顺.
+      expect(book).to be_valid
+   end
+
+   # 继续一个例子
+   it 'hash should has key :a' do
+      hash = { a: 'first', b: 'second' }
+      expect(hash.has_key?(:a)).to be true
+      expect(hash).to be_has_key(:a)
+   end
+
+   # 是不是发现规律了, 虽然有些时候看起来并不是那么完美无缺, 但总结下就是
+   # expect(obj.my_method?(*args)).to be true 可以改写成
+   # expect(obj).to be_my_method(*args) 这种形式
+   # :my_method? 的限制: 1. 方法名必须要以问号结尾; 2. 方法返回值是boolean
+end
+```
 
 ### 3. 模拟对象 - Test Doubles(RSpec Mocks)
 * Test Double是一个模拟对象,在代码中模拟系统的另一个对象,方便测试.
@@ -295,11 +320,11 @@ Finished in 3 seconds (files took 0.08743 seconds to load)
 ```
 shared_examples_for "any pizza" do
    it "tastes really good" do
-      expect(@pizza.taste_really_good).to be true
+      expect(@pizza).to be_taste_really_good
    end
 
    it "is available by the slice" do
-      expect(@pizza.be_available_by_the_slice).to be true
+      expect(@pizza).to be_available_by_the_slice
    end
 end
 ```
@@ -314,7 +339,7 @@ describe "New York style thin crust pizza" do
    it_behaves_like "any pizza"
 
    it "has a really great sauce" do
-      expect(@pizza.have_a_really_great_sauce).to be true
+      expect(@pizza).to be_have_a_really_great_sauce
    end
 end
 
@@ -326,7 +351,7 @@ describe "Chicago style stuffed pizza" do
    it_behaves_like "any pizza"
 
    it "has a ton of cheese" do
-      expect(@pizza.have_a_ton_of_cheese).to be true
+      expect(@pizza).to be_have_a_ton_of_cheese
    end
 end
 ```
