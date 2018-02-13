@@ -133,9 +133,9 @@ a.equal? b               # true
 |be_between(min, max).inclusive| 当 >= min 且 <= max 时通过 |expect(actual).to be_between(min, max).inclusive|
 |be_between(min, max).exclusive| 当 < min 且 > max 时通过 |expect(actual).to be_between(min, max).exclusive|
 |match| 当匹配正则表达式时通过 |expect(actual).to match(/regex/)|
-|be_instance_of| 当 obj.class == MyClass 为true时通过 |expect(actual).to be_instance_of(MyClass)|
-|be_kind_of| 当 obj.is_a? MyClass 为true时通过 |expect(actual).to be_kind_of(MyClass)|
-|respond_to| 当 obj.respond_to? :my_method 为true时通过 |expect(actual).to respond_to(:my_method)|
+|be_instance_of| 当 actual.class == MyClass 为true时通过 |expect(actual).to be_instance_of(MyClass)|
+|be_kind_of| 当 actual.is_a? MyClass 为true时通过 |expect(actual).to be_kind_of(MyClass)|
+|respond_to| 当 actual.respond_to? :my_method 为true时通过 |expect(actual).to respond_to(:my_method)|
 |be_truthy| 当不是false和nil时通过 |expect(actual).to be_truthy|
 |be_falsey| 当是false或nil时通过 |expect(actual).to be_falsey|
 |be_nil| 同 be nil |expect(actual).to be_nil|
