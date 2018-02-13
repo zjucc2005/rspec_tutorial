@@ -83,7 +83,6 @@ describe '/home' do
         # or get authenticity token(user login) before expect
         headers = { 'ACCEPT' => 'application/json' }
         post '/post_params_test', {a: 'first', b: 'second'}, headers
-        puts last_response.to_json
         expect(last_response.status).to eq 200
         expect(last_response.content_type).to eq 'application/json'
         expect(last_response.body).to eq '{"status":"succ","params":{"a":"first","b":"second","format":null}}'
