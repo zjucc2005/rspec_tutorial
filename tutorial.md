@@ -2,11 +2,11 @@
 ![](http://rspec.info/images/logo.png)
 ## 开始吧, 先来Hello World!
 1. 安装RSpec
-```
+```sh
 $ gem install rspec
 ```
 2. 新建第一个测试用例文件hello_world_spec.rb, 写入下面的代码
-```
+```ruby
 class HelloWorld
 
    def say_hello
@@ -28,7 +28,7 @@ describe HelloWorld do
 end
 ```
 3. 运行hello_world_spec.rb
-```
+```sh
 $ rspec hello_world_spec.rb
 .
 
@@ -38,7 +38,7 @@ Finished in 0.00231 seconds (files took 0.18998 seconds to load)
 
 ## 基本语法
 ### 1. 关键词 - 以上面的hello_world_spec.rb为例
-```
+```ruby
 # describe - 通常用来定义一组测试用例, describe的参数可以是类/字符串.
 # 也可以写成 RSpec.describe HelloWorld{...}
 describe HelloWorld do
@@ -70,7 +70,7 @@ end
 ```
 ### 2. 匹配方法
 hello_world_spec.rb 中用来描述预期结果的语句
-```
+```ruby
 expect(message).to eq "Hello World!"
 # 加上括号后,语法结构更清晰
 expect(message).to eq("Hello World!")
@@ -79,7 +79,7 @@ expect(message).not_to eq("Goodbye!")
 ```
 上面的 eq 是RSpec的匹配方法, 用来表示 message 与预期结果 "Hello World!" 相等. 除了 eq 之外, eql, be, equal 都是表示相等, 用法没有什么不同
 
-```
+```ruby
 describe "匹配方法测试" do
 
    it "eq/eql/be/equal应该都是表示相等" do
@@ -101,7 +101,7 @@ end
 1. :equal? 是同一个对象时(:__id__返回结果一致),返回true
 2. :==, :eql? 是比较对象完全一致时(:__id__返回结果可以不同),返回true
 3. 比较数值时 :eql? 区分 Float 和 Integer, :== 不区分
-```
+```ruby
 class Book; end
 book1 = Book.new
 book2 = Book.new
@@ -146,7 +146,7 @@ a.equal? b               # true
 |raise_error(ErrorClass,'error message')| 当block抛出ErrorClass异常且异常消息'error message'时通过 |expect{ block }.to (ErrorClass,'error message')|
 * 注意! expect后面有传普通参数,也有传block的,注意区分!
 * 除了上述匹配方法之外,还有一类匹配方法,原先并不存在,RSpec通过元编程的能力实现这类'幽灵方法',优化了代码的可读性,如下:
-```
+```ruby
 describe Book do
    let(:book) { Book.new }
 
@@ -174,7 +174,7 @@ end
 ### 3. 模拟对象 - Test Doubles(RSpec Mocks)
 * Test Double是一个模拟对象,在代码中模拟系统的另一个对象,方便测试.
 * 例如,测试时需要一个书架的类(Bookshelf),可以自动列出所有书名的方法(:list_book_titles),如下:
-```
+```ruby
 class Bookshelf
 
    def initialize(*books)
@@ -188,14 +188,14 @@ class Bookshelf
 end
 ```
 * 但书本类(Book)相关的代码还在开发中,不能使用.此时可以通过Test Double去模拟它.
-```
+```ruby
 book = double('Book')
 # 也可以直接创建一个有属性的对象
 book_1 = double('Book', title: 'Metaprogramming Ruby 2nd')
 book_2 = double('Book', title: 'The RSpec Book')
 ```
 * 下面是测试用例
-```
+```ruby
 describe Bookshelf do
    it 'should return correct book titles' do
       book_1 = double('Book', title: 'Metaprogramming Ruby 2nd')
@@ -209,7 +209,7 @@ end
 ### 4. 模拟方法 - Method Stubs
 * Test Double是直接模拟一个不存在的类及其方法,但如果类已经存在,我们只需要模拟这个类的方法的话,该怎么做呢?
 * RSpec也可以直接模拟真实对象的方法
-```
+```ruby
 class Book; end
 
 book = Book.new
@@ -244,7 +244,7 @@ end
 * 这些代码需要在每个测试用例的开始结束时自动加载,减少代码的重复.
 * 原则上,每个测试用例之间需要相互独立,通过钩子加载的代码不能对其他测试用例造成干扰.
 * unit test 里通过 setup 和 teardown 来实现, RSpec也提供了一系列钩子来实现, 比如 before 和 after
-```
+```ruby
 class MyClass
    attr_accessor :message
 
@@ -275,7 +275,7 @@ end
 * 1. 一个let只能创建一个对象,以便后面测试代码直接调用,而before(:each)中可以做更多的操作;
 * 2. let只会执行一遍,执行后会缓存创建后的对象,后续执行调用速度快;
 * 所以上面的测试用例也可以写成:
-```
+```ruby
 describe MyClass do
    let(:my_class){ MyClass.new }
 
@@ -291,7 +291,7 @@ end
 ```
 ### 6. 标签 - Tags
 RSpec可以给测试用例加上标签,默认情况下,RSpec会运行所有测试用例,但加上标签后,运行时就可以通过标签只运行某一组测试
-```
+```ruby
 # tags_test.rb
 describe "How to run specific Examples with Tags" do
    it 'is a slow test', :slow => true do
@@ -304,7 +304,7 @@ describe "How to run specific Examples with Tags" do
    end
 end
 ```
-```
+```sh
 $ rspec tags_test.rb --tag=slow
 Run options: include {:slow=>true}
 This test is slow!
@@ -317,7 +317,7 @@ Finished in 3 seconds (files took 0.08743 seconds to load)
 ## 共享测试用例
 * 当写的测试代码越来越多时,我们会发现有很多类之间会有着类似的行为
 * 这时可以用共享测试用例包装这一组行为,然后再其他的类测试里直接引用,减少重复
-```
+```ruby
 shared_examples_for "any pizza" do
    it "tastes really good" do
       expect(@pizza).to be_taste_really_good
@@ -330,7 +330,7 @@ end
 ```
 * 上述代码用shared_examples_for申明了一组共享测试用例'any pizza',
 * 然后我们在其他测试用例组里通过 it_behaves_like 来引用它
-```
+```ruby
 describe "New York style thin crust pizza" do
    before(:each) do
       @pizza = Pizza.new(:region => 'New York', :style => 'thin crust')
@@ -358,7 +358,7 @@ end
 ## 测试用例组的嵌套
 * 前面提到 describe 可以实现测试用例组嵌套,当测试用例越來越多时,将测试进行分组会更方便管理
 * 下面是一个简单例子
-```
+```ruby
 describe 'outer' do
    describe 'inner' do
    end
@@ -372,7 +372,7 @@ end
 4.Inner after
 5.Outer after
 * 简单的验证一下,代码如下:
-```
+```ruby
 describe "outer" do
    before(:each) { puts "1 - outer before" }
    describe "inner" do
@@ -384,7 +384,7 @@ describe "outer" do
 end
 ```
 * 执行上述代码,得到如下结果,验证通过
-```
+```sh
 1 - outer before
 2 - inner before
 3 - test example
