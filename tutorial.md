@@ -220,7 +220,7 @@ allow(:book).to receive(:title){ 'The RSpec Book' }
 book = double('Book', title: 'The RSpec Book')
 ```
 * Test Double 提供以下3种方式创建模拟方法
-```
+```ruby
 allow(:book).to receive(:title){ 'The RSpec Book' }
 allow(:book).to receive(:title).and_return('The RSpec Book')
 allow(:book).to receive_messages {
