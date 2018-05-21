@@ -29,34 +29,55 @@ Copyright © 2018上海诗禹信息技术有限公司 All Rights Reserved
 [2. 接口](#api)
 >[2.1. 用户管理](#accounts)
 >>[2.1.1 用户认证/登录](#access_token)
+
 >>[2.1.2 获取当前认证用户](#current_account)
+
 >>[2.1.3 用户注册](#registration)
+
 >>[2.1.4 用户激活](#confirmation)
+
 >>[2.1.5 用户创建](#accounts_create)
+
 >>[2.1.6 用户删除](#accounts_delete)
+
 >>[2.1.7 用户信息更新](#accounts_update)
+
 >>[2.1.8 单个用户详情](#accounts_show)
+
 >>[2.1.9 用户列表查询](#accounts_index)
 
 >[2.2 用户组管理](#account_groups)
 >>[2.2.1 用户组创建](#account_groups_create)
+
 >>[2.2.2 用户组删除](#account_groups_delete)
+
 >>[2.2.3 用户组信息更新](#account_groups_update)
+
 >>[2.2.4 单个用户组详情](#account_groups_show)
+
 >>[2.2.5 用户组列表查询](#account_groups_index)
 
 >[2.3 角色管理](#roles)
 >>[2.3.1 角色创建](#roles_create)
+
 >>[2.3.2 角色删除](#roles_delete)
+
 >>[2.3.3 角色信息更新](#roles_update)
+
 >>[2.3.4 单个角色详情](#roles_show)
+
 >>[2.3.5 角色列表查询](#roles_index)
+
 
 >[2.4 渠道管理](#channels)
 >>[2.4.1 渠道创建](#channels_create)
+
 >>[2.4.2 渠道删除](#channels_delete)
+
 >>[2.4.3 渠道信息更新](#channels_update)
+
 >>[2.4.4 单个渠道详情](#channels_show)
+
 >>[2.4.5 渠道列表查询](#channels_index)
 
 [3. 附录](#appendix)
