@@ -240,7 +240,7 @@ Copyright © 2018上海诗禹信息技术有限公司 All Rights Reserved
 <h4 id="accounts_create">2.1.5 用户创建</h4>
 
 | Request | Response |
-| :- | |
+| :- | :- |
 | POST /api/v1.0/accounts/create | 200 OK Content-Type: application/json |
 
 * 请求参数
@@ -251,6 +251,7 @@ Copyright © 2018上海诗禹信息技术有限公司 All Rights Reserved
 	"password": "pa$$w0rd",
 	"password_confirmation": "pa$$w0rd",
 	"nickname": "NICK",
+	"telephone": 123456,
 	"role_ids": [18],
 	"channel_ids": [5],
 	"account_group_ids": [19]
@@ -320,6 +321,9 @@ Copyright © 2018上海诗禹信息技术有限公司 All Rights Reserved
  # PUT /api/v1.0/accounts/1/update
  {
  	"access_token": "abcd",  # 用于验证请求用户身份
+ 	"password": "12341234",
+ 	"password_confirmation": "12341234",
+ 	"nickname": "Samuel",
  	"telephone": "456456",
  	"role_ids": [ 8, 10, 11 ],
  	"channel_ids": [1],
@@ -908,14 +912,14 @@ Copyright © 2018上海诗禹信息技术有限公司 All Rights Reserved
 
 <h2 id="appendix">附录</h2>
 <h3 id="filter_rules">Filter Rules</h3>
-```
-#    :matcher     :rule            :query_syntax
-#    name      => equal         => 'name = ?'
-#    name_eq   => equal         => 'name = ?'
-#    name_in   => include       => 'name in (?)'
-#    name_cont => contain       => 'name like ?'
-#    name_gt   => greater than  => 'name > ?'
-#    name_gteq => greater/equal => 'name >= ?'
-#    name_lt   => less than     => 'name < ?'
-#    name_lteq => less/equal    => 'name <= ?'
-```
+
+| matcher | example | rule | query_syntax |
+| :- | :- | :- | :- |
+| (blank) | name | equal to | name = ? |
+| eq | name_eq | equal to | name = ? |
+| in | name_in | include | name in (?) |
+| cont | name_cont | contain | name like ? |
+| gt | name_gt | greater than | name > ? |
+| gteq | name_gteq | greater than or equal to | name >= ? |
+| lt | name_lt | less than | name < ? |
+| lteq | name_lteq | less than or eqaul to | name <= ? |
