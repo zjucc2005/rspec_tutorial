@@ -32,7 +32,7 @@ Drowsy_Cave         = { T: Simachemo, G: GlowingOre(253, 321), CherrySunflower(6
 
 ## == Tuesday ==
 Port_Skandia        = { W: Sunbird(476, 488) }
-Helonia_Coast       = { T: Kalna }
+Helonia_Coast       = { T: Kalna, E: true }
 Crescent_Hill       = { W: Mainframe_Soldier(803, 664), T: Varis, DNG(party), 
                         G: PatternedGrass(488, 247), RoughPurpleGemstone(553, 109) }
 Cactakara_Forest    = { T: DNG(solo), G: EnergizingCabbage(343, 515) }
