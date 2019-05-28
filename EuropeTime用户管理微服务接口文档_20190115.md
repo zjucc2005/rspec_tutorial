@@ -15,7 +15,8 @@
 | :- | :- | :- | :- | :- |
 | V1.0 | 2018/04/18 | 王倩 |||
 | V1.1 | 2018/06/14 | 蔡畅 | 接口消息增加多语种支持 |        |
-|   |   |       |      |        |
+| V1.2 | 2018/12/25 | 蔡畅 | 用户数据表增加个人信息相关字段(详见2.1.10等接口), 增改查相关接口支持新字段 |        |
+| V1.3 | 2019/01/15 | 蔡畅 | 2.1.5/2.1.6/2.1.7 用户创建/验证接口增加 consignor_email 字段
 
 **版权声明**
 
@@ -49,6 +50,8 @@ Copyright © 2018上海诗禹信息技术有限公司 All Rights Reserved
 >>[2.1.10 单个用户详情](#accounts_show)
 
 >>[2.1.11 用户列表查询](#accounts_index)
+
+>>[2.1.12 用户的mypost id查询](#accounts_search_mp4_id)
 
 >[2.2 用户组管理](#account_groups)
 >>[2.2.1 用户组创建](#account_groups_create)
@@ -176,7 +179,18 @@ Copyright © 2018上海诗禹信息技术有限公司 All Rights Reserved
 				"id": 1, 
 				"name": "TestGroup"
 			}
-		]
+		],
+		"firstname": "名", # -- v1.2 --
+		"lastname": "姓", # -- v1.2 --
+		"sex": "male", # -- v1.2 --
+		"country": "cn", # -- v1.2 --
+		"city": "上海", # -- v1.2 --
+		"address": "xxx路233号A座", # -- v1.2 --
+		"company": "诗禹信息科技有限公司", # -- v1.2 --
+		"qq_num": "1024", # -- v1.2 --
+		"wechat_num": "quaie_sh", # -- v1.2 --
+		"extra_email": "extra_email@gmail.com", # -- v1.2 --, 和帐号邮箱区分
+		"memo": "一些备注", # -- v1.2 --
 	},
 	"access_token": {
 	 	"access_token": "4E0_W8z4jCdOVxf3DgVuARejvR8T8g...", 
@@ -263,7 +277,19 @@ Copyright © 2018上海诗禹信息技术有限公司 All Rights Reserved
 	"telephone": 123456,
 	"role_ids": [18],
 	"channel_ids": [5],
-	"account_group_ids": [19]
+	"account_group_ids": [19],
+	"firstname": "名", # -- v1.2 --
+	"lastname": "姓", # -- v1.2 --
+	"sex": "male", # -- v1.2 --
+	"country": "cn", # -- v1.2 --
+	"city": "上海", # -- v1.2 --
+	"address": "xxx路233号A座", # -- v1.2 --
+	"company": "诗禹信息科技有限公司", # -- v1.2 --
+	"qq_num": "1024", # -- v1.2 --
+	"wechat_num": "quaie_sh", # -- v1.2 --
+	"extra_email": "extra_email@gmail.com", # -- v1.2 --, 和帐号邮箱区分
+	"memo": "一些备注", # -- v1.2 --
+	"consignor_email": nil, # -- v1.3 --, 货主邮箱, 当创建role为c_staff的用户时验证该字段
 }
 ```
 * 响应代码
@@ -283,7 +309,18 @@ Copyright © 2018上海诗禹信息技术有限公司 All Rights Reserved
 		],
 		"account_groups": [
 			{ "id": 19, "names": "SAMPLE" }
-		]
+		],
+		"firstname": "名", # -- v1.2 --
+		"lastname": "姓", # -- v1.2 --
+		"sex": "male", # -- v1.2 --
+		"country": "cn", # -- v1.2 --
+		"city": "上海", # -- v1.2 --
+		"address": "xxx路233号A座", # -- v1.2 --
+		"company": "诗禹信息科技有限公司", # -- v1.2 --
+		"qq_num": "1024", # -- v1.2 --
+		"wechat_num": "quaie_sh", # -- v1.2 --
+		"extra_email": "extra_email@gmail.com", # -- v1.2 --, 和帐号邮箱区分
+		"memo": "一些备注", # -- v1.2 --
 	}
 }
 # OR
@@ -315,7 +352,19 @@ Copyright © 2018上海诗禹信息技术有限公司 All Rights Reserved
 			"telephone": 123456,
 			"role_ids": [18],
 			"channel_ids": [5],
-			"account_group_ids": [19]
+			"account_group_ids": [19],
+			"firstname": "名", # -- v1.2 --
+			"lastname": "姓", # -- v1.2 --
+			"sex": "male", # -- v1.2 --
+			"country": "cn", # -- v1.2 --
+			"city": "上海", # -- v1.2 --
+			"address": "xxx路233号A座", # -- v1.2 --
+			"company": "诗禹信息科技有限公司", # -- v1.2 --
+			"qq_num": "1024", # -- v1.2 --
+			"wechat_num": "quaie_sh", # -- v1.2 --
+			"extra_email": "extra_email@gmail.com", # -- v1.2 --, 和帐号邮箱区分
+			"memo": "一些备注", # -- v1.2 --
+			"consignor_email": nil, # -- v1.3 --, 货主邮箱, 当创建role为c_staff的用户时验证该字段
 		},
 		{
 			"email": "second@email.email",
@@ -325,7 +374,8 @@ Copyright © 2018上海诗禹信息技术有限公司 All Rights Reserved
 			"telephone": 654321,
 			"role_ids": [18],
 			"channel_ids": [5],
-			"account_group_ids": [19]
+			"account_group_ids": [19],
+			# ...
 		}
 		# ...		
 	]
@@ -349,7 +399,18 @@ Copyright © 2018上海诗禹信息技术有限公司 All Rights Reserved
 			],
 			"account_groups": [
 				{ "id": 19, "names": "SAMPLE" }
-			]
+			],
+			"firstname": "名", # -- v1.2 --
+			"lastname": "姓", # -- v1.2 --
+			"sex": "male", # -- v1.2 --
+			"country": "cn", # -- v1.2 --
+			"city": "上海", # -- v1.2 --
+			"address": "xxx路233号A座", # -- v1.2 --
+			"company": "诗禹信息科技有限公司", # -- v1.2 --
+			"qq_num": "1024", # -- v1.2 --
+			"wechat_num": "quaie_sh", # -- v1.2 --
+			"extra_email": "extra_email@gmail.com", # -- v1.2 --, 和帐号邮箱区分
+			"memo": "一些备注", # -- v1.2 --
 		},
 		{
 			"id": 1917,
@@ -364,7 +425,8 @@ Copyright © 2018上海诗禹信息技术有限公司 All Rights Reserved
 			],
 			"account_groups": [
 				{ "id": 19, "names": "SAMPLE" }
-			]
+			],
+			# ...
 		}
 		# ...
 	]
@@ -396,7 +458,19 @@ Copyright © 2018上海诗禹信息技术有限公司 All Rights Reserved
 	"telephone": 123456,
 	"role_ids": [18],
 	"channel_ids": [5],
-	"account_group_ids": [19]
+	"account_group_ids": [19],
+	"firstname": "名", # -- v1.2 --
+	"lastname": "姓", # -- v1.2 --
+	"sex": "male", # -- v1.2 --
+	"country": "cn", # -- v1.2 --
+	"city": "上海", # -- v1.2 --
+	"address": "xxx路233号A座", # -- v1.2 --
+	"company": "诗禹信息科技有限公司", # -- v1.2 --
+	"qq_num": "1024", # -- v1.2 --
+	"wechat_num": "quaie_sh", # -- v1.2 --
+	"extra_email": "extra_email@gmail.com", # -- v1.2 --, 和帐号邮箱区分
+	"memo": "一些备注", # -- v1.2 --
+	"consignor_email": nil, # -- v1.3 --, 货主邮箱, 当创建role为c_staff的用户时验证该字段
 }
 ```
 * 响应代码
@@ -461,7 +535,18 @@ Copyright © 2018上海诗禹信息技术有限公司 All Rights Reserved
  	"telephone": "456456",
  	"role_ids": [ 8, 10, 11 ],
  	"channel_ids": [1],
- 	"account_group_ids": []
+ 	"account_group_ids": [],
+	"firstname": "名", # -- v1.2 --
+	"lastname": "姓", # -- v1.2 --
+	"sex": "male", # -- v1.2 --
+	"country": "cn", # -- v1.2 --
+	"city": "上海", # -- v1.2 --
+	"address": "xxx路233号A座", # -- v1.2 --
+	"company": "诗禹信息科技有限公司", # -- v1.2 --
+	"qq_num": "1024", # -- v1.2 --
+	"wechat_num": "quaie_sh", # -- v1.2 --
+	"extra_email": "extra_email@gmail.com", # -- v1.2 --, 和帐号邮箱区分
+	"memo": "一些备注", # -- v1.2 --
  }
 ```
 * 响应代码
@@ -525,7 +610,18 @@ Copyright © 2018上海诗禹信息技术有限公司 All Rights Reserved
 				"id": 1, 
 				"name": "TestGroup"
 			}
-		]
+		],
+		"firstname": "名", # -- v1.2 --
+		"lastname": "姓", # -- v1.2 --
+		"sex": "male", # -- v1.2 --
+		"country": "cn", # -- v1.2 --
+		"city": "上海", # -- v1.2 --
+		"address": "xxx路233号A座", # -- v1.2 --
+		"company": "诗禹信息科技有限公司", # -- v1.2 --
+		"qq_num": "1024", # -- v1.2 --
+		"wechat_num": "quaie_sh", # -- v1.2 --
+		"extra_email": "extra_email@gmail.com", # -- v1.2 --, 和帐号邮箱区分
+		"memo": "一些备注", # -- v1.2 --
 	}
 }
 # OR
@@ -591,7 +687,18 @@ Copyright © 2018上海诗禹信息技术有限公司 All Rights Reserved
 					"id": 1, 
 					"name": "TestGroup"
 				}
-			]
+			],
+			"firstname": "名", # -- v1.2 --
+			"lastname": "姓", # -- v1.2 --
+			"sex": "male", # -- v1.2 --
+			"country": "cn", # -- v1.2 --
+			"city": "上海", # -- v1.2 --
+			"address": "xxx路233号A座", # -- v1.2 --
+			"company": "诗禹信息科技有限公司", # -- v1.2 --
+			"qq_num": "1024", # -- v1.2 --
+			"wechat_num": "quaie_sh", # -- v1.2 --
+			"extra_email": "extra_email@gmail.com", # -- v1.2 --, 和帐号邮箱区分
+			"memo": "一些备注", # -- v1.2 --
 		},
 		{
 			"id": 2,
@@ -613,7 +720,8 @@ Copyright © 2018上海诗禹信息技术有限公司 All Rights Reserved
 					"name": "ETCN002"
 				}
 			],
-			"account_groups": [ ]
+			"account_groups": [ ],
+			# ...
 		}
 	],
 	"page": 1,
@@ -626,6 +734,48 @@ Copyright © 2018上海诗禹信息技术有限公司 All Rights Reserved
 	"reason": [ "fail reasons" ]
 }
 ```
+
+<h4 id="accounts_mp4_id"> 2.1.12 用户的 mypost4u id 查询</h4>
+
+| Request | Response |
+| :- | :- |
+| GET /api/v1.0/accounts/mp4_id | 200 OK |
+| Content-Type: application/json | Content-Type: application/json |
+
+* 请求参数
+```ruby
+{
+	"access_token": "abcd",  # 用于验证请求用户身份,
+	"emails": [
+		"first@user.com", 
+		"second@user.com"
+	]
+}
+```
+* 响应代码
+```ruby
+{
+	"status": "succ",
+	"data": [
+		{ 
+			"email": "first@user.com",
+			"mp4_id": 23456
+		},
+		{ 
+			"email": "second@user.com",
+			"mp4_id": 12345
+		}
+		# ...
+	]
+}
+# OR
+{
+	"status": "fail",
+	"reason": [ "fail reasons" ]
+}
+```
+
+
 
 <h3 id="account_groups">用户组管理</h3>
 
@@ -1069,7 +1219,8 @@ Copyright © 2018上海诗禹信息技术有限公司 All Rights Reserved
 | (blank) | name | equal to | name = ? |
 | eq | name_eq | equal to | name = ? |
 | in | name_in | in | name in (?) |
-| cont | name_cont | contain | name like ? |
+| cont | name_cont | string contain | name like ? |
+| cont | name_cont | array/list contain | name @> ? |
 | gt | name_gt | greater than | name > ? |
 | gteq | name_gteq | greater than or equal to | name >= ? |
 | lt | name_lt | less than | name < ? |
