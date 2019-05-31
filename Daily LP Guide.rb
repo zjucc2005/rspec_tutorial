@@ -127,7 +127,6 @@ Candeo_Marsh        = { W: Chaos_Unicorn(809, 576), T: DNG(solo) }
 Ventos_Prairie      = { T: Asceldar, G: WindSpiceBush(559, 492), GlimmeringStone(449, 169) }
 Star_Sand_Desert    = { T: DNG(party) }
 Oblitus_Wood        = { W: Grasslands_Sasquack(474, 732), T: Gomory, DNG(solo), E: true }
-Blizzard_Berg       = { E: true }
 Rainmist_Reach      = { W: Woodbeast_Hunter(448, 315), G: FlamingMineralVein(154, 472), E: true }
 Emerald_Marsh       = { T: Marco }
 Starstruck_Plateau  = { W: Grey_Skeletal_Hound(299, 403), T: Olmino, G: VultureNest(212, 601) }
