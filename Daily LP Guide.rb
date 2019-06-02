@@ -180,7 +180,6 @@ Triatio_Highlands   = { W: Argus_Beastmaster(533, 557), T: Gordon, DNG(solo/part
 Ventos_Prairie      = { W: Armored_Rhino(328, 573), T: Leon, DNG(solo)}
 Oblitus_Wood        = { T: DNG(solo/party), G: MoltenOre(118, 106) }
 Star_Sand_Desert    = { W: Imperial_Moa(236, 783), T: Serge, DNG(party), G: WildBirdsNest(294, 791) }
-Blizzard_Berg       = { E: true }
 Rainmist_Reach      = { W: Sandworm_Tunneler(183, 516) }
 Emerald_Marsh       = { T: Rumeon }
 Starstruck_Plateau  = { W: Dark_Griffin(512, 632) }
