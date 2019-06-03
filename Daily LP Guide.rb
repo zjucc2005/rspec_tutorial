@@ -2,7 +2,6 @@
 
 ## == Monday ==
 Port_Skandia        = { W: Mishchievous_Bunnyhop(264, 252), E: true}
-Helonia_Coast       = { E: true }
 Crescent_Hill       = { W: Tribal_Patrolman(454, 283), T: Senka, DNG(solo), G: NutTree(808, 683), E: true }
 Cactakara_Forest    = { G: SourFruitTree(589, 88), G: MineralRichDirt(460, 125), E: true }
 Demarech_Mine       = { W: Bloodthirsty_Lion(321, 174), T: Gebast, DNG(party) }
