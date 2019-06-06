@@ -98,7 +98,6 @@ Candeo_Marsh        = { W: Stone_Forest_Turtle(599, 661), T: Weily, DNG(party), 
 Ventos_Prairie      = { T: DNG(solo/party), E: true }
 Oblitus_Wood        = { W: Butterfly_Hoplite(675, 225), T: Barthold, G: JadeVein(791, 459) }
 Star_Sand_Desert    = { T: DNG(solo), E: true }
-Vultures_Vale       = { E: true }
 Rainmist_Reach      = { W: Forest_Fox(122, 326), T: Dinglebert, G: CloudMeteorMineral(411, 201) }
 Emerald_Marsh       = { W: Emerald_Iguana(629, 494), E: true }
 Starstruck_Plateau  = { T: Mandisa, G: PlateauCornPlant(667, 275) }
